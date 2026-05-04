@@ -1,15 +1,139 @@
 @import "tailwindcss";
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@theme {
+  /* Colors */
+  --color-bg-page: #f5f5f5;
+  --color-bg-main: #ffffff;
+  --color-bg-sidebar: #e5e5e5;
+  --color-bg-card: #fbfffb;
+
+  --color-brand: #008313;
+  --color-brand-dark: #004c32;
+  --color-brand-soft: #dcfddd;
+
+  --color-accent-blue: #0799bd;
+  --color-accent-teal: #13b9b6;
+
+  --color-text-main: #000000;
+  --color-text-muted: #6f6f6f;
+  --color-text-light: #9b9b9b;
+
+  --color-border-soft: #e3eee3;
+  --color-border-table: #d4d4d4;
+
+  /* Font */
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* Radius */
+  --radius-card: 28px;
+  --radius-pill: 999px;
+  --radius-small: 10px;
+
+  /* Shadow */
+  --shadow-soft: 0 4px 14px rgb(0 0 0 / 0.08);
+  --shadow-sidebar: 0 2px 8px rgb(0 0 0 / 0.14);
+
+  /* Layout */
+  --spacing-sidebar: 280px;
+  --spacing-page-x: 48px;
+  --spacing-page-y: 28px;
+
+  /* Typography */
+  --text-page-title: 32px;
+  --text-page-title--line-height: 1.15;
+  --text-section-title: 24px;
+  --text-section-title--line-height: 1.2;
+  --text-body: 16px;
+  --text-body--line-height: 1.5;
+  --text-small: 13px;
+  --text-small--line-height: 1.4;
 }
 
-.ukg-nav{
-  width: 278px;
+@layer base {
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--color-bg-page);
+    color: var(--color-text-main);
+  }
 }
 
-body{
-  height:100vh;
+@layer components {
+  .layout {
+    @apply min-h-screen bg-bg-main;
+  }
+
+  .sidebar {
+    @apply fixed left-0 top-0 h-screen w-[var(--spacing-sidebar)] bg-bg-sidebar shadow-sidebar px-6 py-6;
+  }
+
+  .main-content {
+    @apply ml-[var(--spacing-sidebar)] px-[var(--spacing-page-x)] py-[var(--spacing-page-y)];
+  }
+
+  .company-badge {
+    @apply inline-flex items-center bg-brand px-4 py-3 text-white text-body font-medium;
+  }
+
+  .page-title {
+    @apply mt-8 text-page-title font-bold;
+  }
+
+  .dashboard-grid {
+    @apply mt-10 grid grid-cols-2 gap-6;
+  }
+
+  .dashboard-card {
+    @apply rounded-card border border-border-soft bg-bg-card p-8;
+  }
+
+  .section-title {
+    @apply text-section-title font-bold;
+  }
+
+  .pill-tabs {
+    @apply inline-flex rounded-pill bg-brand-soft p-1;
+  }
+
+  .pill-tab {
+    @apply rounded-pill px-4 py-2 text-small;
+  }
+
+  .pill-tab-active {
+    @apply bg-brand-dark text-white;
+  }
+
+  .summary-box {
+    @apply rounded-small border border-border-table p-4;
+  }
+
+  .summary-row {
+    @apply flex justify-between py-2 text-body;
+  }
+
+  .summary-total {
+    @apply border-t border-border-table pt-4 font-bold;
+  }
+
+  .primary-button {
+    @apply inline-flex items-center gap-3 rounded-pill bg-brand px-5 py-3 text-white text-body;
+  }
+
+  .nav-item {
+    @apply flex items-center justify-between rounded-small px-5 py-3 text-small;
+  }
+
+  .nav-item-active {
+    @apply bg-[#cfcfcf] font-bold;
+  }
+}
+
+@layer utilities {
+  .text-muted {
+    color: var(--color-text-muted);
+  }
+
+  .text-light {
+    color: var(--color-text-light);
+  }
 }

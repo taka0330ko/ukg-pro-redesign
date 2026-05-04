@@ -1,14 +1,12 @@
-import SideBar from "./components/SideBar"
+import { SideMenuProvider } from "./contexts/SideMenuProvider";
+import { AppLayout } from "./layouts/AppLayout";
 
 function App() {
-
   return (
-    <>
-    <SideBar>
-      
-    </SideBar>
-    </>
-  )
+    <SideMenuProvider>
+      <AppLayout />
+    </SideMenuProvider>
+  );
 }
 
-export default App
+export default App;
