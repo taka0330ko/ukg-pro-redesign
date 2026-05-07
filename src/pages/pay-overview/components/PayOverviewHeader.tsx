@@ -18,7 +18,7 @@ export default function PayOverviewHeader() {
         <span className="text-2xl font-medium text-black">Pay date:</span>
         <button
           type="button"
-          className="inline-flex items-center gap-2 rounded-full bg-[#007d13] px-4 py-2 text-2xl font-medium text-white"
+          className="inline-flex items-center gap-2 rounded-full bg-[#007d13] px-4 py-2 font-medium text-white"
         >
           <CalendarDays className="size-6" strokeWidth={2.4} />
           <span>Apr 24, 2026</span>

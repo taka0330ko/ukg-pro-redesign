@@ -10,7 +10,7 @@ const summaryRows = [
 
 export default function PaySummarySection() {
   return (
-    <section className="min-h-[520px] rounded-2xl border border-[#d0d0d0] bg-white p-4">
+    <section className="min-w-0 min-h-[520px] rounded-2xl border border-[#d0d0d0] bg-white p-4">
       <h3 className="text-2xl font-medium text-black">Pay Summary</h3>
 
       <PieChart />
