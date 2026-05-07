@@ -1,19 +1,39 @@
 import { FileText } from "lucide-react";
+import { paySummaries } from "../../data/payOverviewData";
 import PieChart from "./PieChart";
 
-const summaryRows = [
-  ["Pay period", "04/05/2026 - 04/18/2026"],
-  ["Total hours", "29.183333 Hours"],
-  ["Earnings", "$547.19"],
-  ["Deductions", "$33.66"],
-];
+function formatCurrency(amount: number) {
+  return `$${amount.toFixed(2)}`;
+}
+
+function formatDate(date: string) {
+  const [year, month, day] = date.split("-");
+
+  return `${month}/${day}/${year}`;
+}
 
 export default function PaySummarySection() {
+  const paySummary = paySummaries[0];
+  const summaryRows = [
+    [
+      "Pay period",
+      `${formatDate(paySummary.period.start)} - ${formatDate(
+        paySummary.period.end,
+      )}`,
+    ],
+    ["Total hours", `${paySummary.totalHours.toFixed(2)} Hours`],
+    ["Earnings", formatCurrency(paySummary.grossPay)],
+    ["Deductions", formatCurrency(paySummary.deductions.total)],
+  ];
+
   return (
     <section className="min-w-0 min-h-[520px] rounded-2xl border border-[#d0d0d0] bg-white p-4">
       <h3 className="text-2xl font-medium text-black">Pay Summary</h3>
 
-      <PieChart />
+      <PieChart
+        deductions={paySummary.deductions.total}
+        netPay={paySummary.netPay}
+      />
 
       <div className="mt-5 space-y-5 text-base text-black">
         {summaryRows.map(([label, value]) => (
@@ -26,7 +46,7 @@ export default function PaySummarySection() {
         <div className="border-t border-[#b8b8b8] pt-5">
           <div className="flex items-center justify-between gap-6 font-bold">
             <span>Take home pay</span>
-            <span>$513.53</span>
+            <span>{formatCurrency(paySummary.netPay)}</span>
           </div>
         </div>
       </div>

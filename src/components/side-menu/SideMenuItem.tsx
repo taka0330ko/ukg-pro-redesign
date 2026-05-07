@@ -7,6 +7,7 @@ type SideMenuItemProps = {
   isExpanded?: boolean;
   label: string;
   showChevron?: boolean;
+  variant?: "parent" | "child";
 };
 
 export function SideMenuItem({
@@ -15,19 +16,29 @@ export function SideMenuItem({
   isExpanded = false,
   label,
   showChevron = false,
+  variant = "parent",
 }: SideMenuItemProps) {
   const ChevronIcon = isExpanded ? ChevronUp : ChevronDown;
+  const isChild = variant === "child";
 
   return (
     <button
-      className={`flex min-h-11 w-full items-center gap-3 rounded-[12px] px-8 text-left text-[17px] font-medium leading-tight text-black ${
-        isActive ? "bg-[#d2d5d6] font-bold" : "hover:bg-black/5"
+      className={`flex w-full items-center rounded-[12px] text-left leading-tight text-[#3f4243] ${
+        isChild
+          ? "min-h-12 px-[40px] text-[14px]"
+          : "min-h-12 gap-4 px-3 text-[16px] font-medium"
+      } ${
+        isActive ? "bg-[#d2d5d6] font-bold text-black" : "hover:bg-black/5"
       }`}
       type="button"
     >
-      {Icon ? <Icon className="h-6 w-6 flex-shrink-0 text-[#5f6365]" strokeWidth={2} /> : null}
+      {Icon ? (
+        <Icon className="h-7 w-7 flex-shrink-0 text-[#5f6365]" strokeWidth={2} />
+      ) : null}
       <span className="min-w-0 flex-1">{label}</span>
-      {showChevron ? <ChevronIcon className="h-4 w-4 flex-shrink-0" strokeWidth={2.4} /> : null}
+      {showChevron ? (
+        <ChevronIcon className="ml-8 h-5 w-5 flex-shrink-0" strokeWidth={2.4} />
+      ) : null}
     </button>
   );
 }

@@ -5,7 +5,12 @@ type PiePoint = Highcharts.Point & {
   slice: (sliced?: boolean) => void;
 };
 
-export default function PieChart() {
+type PieChartProps = {
+  deductions: number;
+  netPay: number;
+};
+
+export default function PieChart({ deductions, netPay }: PieChartProps) {
   const chartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -78,12 +83,12 @@ export default function PieChart() {
           data: [
             {
               name: "Deductions",
-              y: 33.66,
+              y: deductions,
               color: "#00BDB3",
             },
             {
               name: "Net pay",
-              y: 547.19,
+              y: netPay,
               color: "#0097C2",
             },
           ],
@@ -94,7 +99,7 @@ export default function PieChart() {
     return () => {
       chart.destroy();
     };
-  }, []);
+  }, [deductions, netPay]);
 
   return <div ref={chartRef} className="mx-auto h-[360px] w-[360px]" />;
 }

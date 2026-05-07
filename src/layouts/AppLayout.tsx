@@ -11,14 +11,12 @@ export function AppLayout({ children }: AppLayoutProps) {
     <div className="flex min-h-screen bg-white">
       <SideMenu />
       <div className="min-w-0 flex-1">
-        <div className="relative">
-          <div className="absolute left-3 top-1/2 z-10 -translate-y-1/2">
-            <SideMenuToggleButton />
-          </div>
+        <div className="flex z-999 items-center fixed bg-white w-full px-4 pb-4">
+          <SideMenuToggleButton />
           <AppHeader />
         </div>
 
-        <main>
+        <main className="mt-16">
           {children}
         </main>
       </div>

@@ -1,4 +1,5 @@
-import { timePeriods } from "./TimePeriod";
+import { timePeriods } from "../../data/payOverviewData";
+import WorkHoursCell from "./WorkHoursCell";
 
 type TimePeriod = (typeof timePeriods)[number];
 
@@ -32,6 +33,7 @@ function getWeekDays(period: TimePeriod) {
     date.setUTCDate(startDate.getUTCDate() + index);
 
     return {
+      date: date.toISOString().slice(0, 10),
       dateNumber: date.getUTCDate(),
       day: dayFormatter.format(date),
       monthYear: monthFormatter.format(date),
@@ -63,11 +65,21 @@ export default function TimeRow({ period = timePeriods[0] }: TimeRowProps) {
           return (
             <div
               key={`${period.id}-${day.dateNumber}`}
-              className={`border-l border-[#555a83] ${
+              className={`relative border-l border-[#555a83] ${
                 // Add the far-right outline only to the graph area, not to the date label row.
                 isLastDay ? "border-r" : ""
               }`}
-            />
+            >
+              {period.shifts
+                .filter((shift) => shift.date === day.date)
+                .map((shift) => (
+                  <WorkHoursCell
+                    key={shift.id}
+                    shift={shift}
+                    topPadding={0}
+                  />
+                ))}
+            </div>
           );
         })}
       </div>

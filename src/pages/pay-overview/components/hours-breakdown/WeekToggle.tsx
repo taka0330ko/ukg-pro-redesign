@@ -1,4 +1,4 @@
-import { timePeriods } from "./TimePeriod";
+import { timePeriods } from "../../data/payOverviewData";
 
 type WeekToggleProps = {
   selectedWeekId: string;

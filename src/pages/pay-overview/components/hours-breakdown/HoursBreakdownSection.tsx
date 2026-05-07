@@ -1,14 +1,28 @@
 import { useState } from "react";
 import TimeColumn from "./TimeColumn";
-import { timePeriods } from "./TimePeriod";
+import { timePeriods, weeklySummaries } from "../../data/payOverviewData";
 import TimeRow from "./TimeRow";
 import WeekToggle from "./WeekToggle";
+
+function formatDate(date: string) {
+  const [year, month, day] = date.split("-");
+
+  return `${month}/${day}/${year}`;
+}
+
+function formatHours(hours: number) {
+  return `${hours.toFixed(2)} hours`;
+}
 
 export default function HoursBreakdownSection() {
   const [selectedWeekId, setSelectedWeekId] = useState(timePeriods[0].id);
   const selectedPeriod =
     timePeriods.find((period) => period.id === selectedWeekId) ??
     timePeriods[0];
+  const totalHours = weeklySummaries.reduce(
+    (sum, summary) => sum + summary.totalHours,
+    0,
+  );
 
   return (
     <section className="min-w-0 min-h-[520px] rounded-2xl border border-[#d0d0d0] bg-white p-4">
@@ -33,6 +47,47 @@ export default function HoursBreakdownSection() {
           </div>
         </div>
       </figure>
+
+      <div className="mx-auto mt-8 w-full max-w-[720px] text-base text-black">
+        <div className="space-y-3">
+          {timePeriods.map((period) => {
+            const summary = weeklySummaries.find(
+              (weeklySummary) => weeklySummary.weekId === period.id,
+            );
+            const isSelected = period.id === selectedWeekId;
+
+            return (
+              <div
+                key={period.id}
+                className="grid grid-cols-[1fr_auto] items-center gap-4"
+              >
+                <div className="flex min-w-0 items-center gap-2">
+                  <span
+                    className={`h-6 w-2 shrink-0 rounded-full ${
+                      isSelected ? "bg-[#008313]" : "bg-transparent"
+                    }`}
+                  />
+                  <span className="shrink-0">{period.label}</span>
+                  <span className="truncate text-[#777777]">
+                    {formatDate(period.range.start)} -{" "}
+                    {formatDate(period.range.end)}
+                  </span>
+                </div>
+                <span className="text-right">
+                  {formatHours(summary?.totalHours ?? period.totalHours)}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-4 border-t border-[#b8b8b8] pt-5">
+          <div className="grid grid-cols-[1fr_auto] items-center gap-4 font-bold">
+            <span>Total hours</span>
+            <span>{totalHours.toFixed(2)} Hours</span>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
