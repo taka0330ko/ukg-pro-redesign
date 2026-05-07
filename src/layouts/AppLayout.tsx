@@ -11,7 +11,7 @@ export function AppLayout({ children }: AppLayoutProps) {
     <div className="flex min-h-screen bg-white">
       <SideMenu />
       <div className="min-w-0 flex-1">
-        <div className="flex z-999 items-center fixed bg-white w-full px-4 pb-4">
+        <div className="flex z-60 items-center fixed bg-white w-full px-4 pb-4">
           <SideMenuToggleButton />
           <AppHeader />
         </div>

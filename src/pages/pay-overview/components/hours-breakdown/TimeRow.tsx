@@ -1,7 +1,15 @@
+import type { MouseEvent } from "react";
+import { useState } from "react";
 import { timePeriods } from "../../data/payOverviewData";
 import WorkHoursCell from "./WorkHoursCell";
+import WorkHoursCard from "./WorkHoursCard";
 
 type TimePeriod = (typeof timePeriods)[number];
+type Shift = TimePeriod["shifts"][number];
+type CardPosition = {
+  x: number;
+  y: number;
+};
 
 type TimeRowProps = {
   period?: TimePeriod;
@@ -42,12 +50,25 @@ function getWeekDays(period: TimePeriod) {
 }
 
 export default function TimeRow({ period = timePeriods[0] }: TimeRowProps) {
+  const [activeShift, setActiveShift] = useState<Shift | null>(null);
+  const [cardPosition, setCardPosition] = useState<CardPosition>({
+    x: 0,
+    y: 0,
+  });
   const days = getWeekDays(period);
+
+  function updateCardPosition(event: MouseEvent<HTMLDivElement>) {
+    setCardPosition({
+      x: event.clientX,
+      y: event.clientY,
+    });
+  }
 
   return (
     <div className="w-full">
       <div
-        className="grid grid-cols-7"
+        data-time-grid
+        className="relative grid grid-cols-7"
         style={{
           // The top padding is reserved for the 00:00 label, so the gray plot background starts below it.
           backgroundImage: "linear-gradient(#f5f5f5, #f5f5f5)",
@@ -76,12 +97,31 @@ export default function TimeRow({ period = timePeriods[0] }: TimeRowProps) {
                   <WorkHoursCell
                     key={shift.id}
                     shift={shift}
+                    onActivate={(nextShift, event) => {
+                      setActiveShift(nextShift);
+                      updateCardPosition(event);
+                    }}
+                    onDeactivate={() => setActiveShift(null)}
+                    onMove={updateCardPosition}
                     topPadding={0}
                   />
                 ))}
             </div>
           );
         })}
+
+      </div>
+
+      <div
+        className={`pointer-events-none fixed z-[100] w-[380px] max-w-[calc(100vw-2rem)] -translate-x-1/2 -translate-y-[calc(100%+0.75rem)] transition-all duration-200 ease-out ${
+          activeShift ? "scale-100 opacity-100" : "scale-95 opacity-0"
+        }`}
+        style={{
+          left: `${cardPosition.x}px`,
+          top: `${cardPosition.y}px`,
+        }}
+      >
+        {activeShift ? <WorkHoursCard shift={activeShift} /> : null}
       </div>
 
       <div className="grid grid-cols-7 border-t border-[#9c9c9c]">

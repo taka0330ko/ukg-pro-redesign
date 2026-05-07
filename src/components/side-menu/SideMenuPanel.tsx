@@ -20,7 +20,7 @@ type SideMenuPanelProps = {
 export function SideMenuPanel({ isOpen, onClose }: SideMenuPanelProps) {
   return (
     <aside
-      className={`fixed inset-y-0 left-0 z-40 h-screen w-[260px] max-w-full overflow-y-auto bg-[#e5e8e9] transition-transform duration-300 ease-in-out md:sticky md:top-0 md:z-auto md:translate-x-0 ${
+      className={`fixed inset-y-0 left-0 z-99 h-screen w-[260px] max-w-full overflow-y-auto bg-[#e5e8e9] transition-transform duration-300 ease-in-out md:sticky md:top-0 md:z-auto md:translate-x-0 ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >

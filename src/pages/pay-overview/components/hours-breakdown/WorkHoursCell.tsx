@@ -1,3 +1,4 @@
+import type { MouseEvent } from "react";
 import { timePeriods } from "../../data/payOverviewData";
 
 type Shift = (typeof timePeriods)[number]["shifts"][number];
@@ -5,6 +6,9 @@ type Shift = (typeof timePeriods)[number]["shifts"][number];
 type WorkHoursCellProps = {
   shift: Shift;
   hourHeight?: number;
+  onActivate?: (shift: Shift, event: MouseEvent<HTMLDivElement>) => void;
+  onDeactivate?: () => void;
+  onMove?: (event: MouseEvent<HTMLDivElement>) => void;
   topPadding?: number;
 };
 
@@ -26,6 +30,9 @@ function formatTimeRange(shift: Shift) {
 export default function WorkHoursCell({
   shift,
   hourHeight = DEFAULT_HOUR_HEIGHT,
+  onActivate,
+  onDeactivate,
+  onMove,
   topPadding = DEFAULT_TOP_PADDING,
 }: WorkHoursCellProps) {
   const startMinutes = timeToMinutes(shift.actual.clockIn);
@@ -41,12 +48,18 @@ export default function WorkHoursCell({
 
   return (
     <div
-      className="absolute z-50 inset-x-1 overflow-hidden rounded-md bg-[#008313] text-white"
+      className="absolute inset-x-1 z-50 overflow-hidden rounded-md bg-[#008313] text-white outline-none transition-transform duration-150 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-[#004c32]"
       style={{
         top: `${top}px`,
         height: `${height}px`,
       }}
       aria-label={`${shift.day} ${formatTimeRange(shift)}`}
+      role="button"
+      tabIndex={0}
+      onBlur={onDeactivate}
+      onMouseEnter={(event) => onActivate?.(shift, event)}
+      onMouseLeave={onDeactivate}
+      onMouseMove={onMove}
     >
       {isLate ? <div className="h-2.5 bg-[#ff7f8a]" /> : null}
       <div
