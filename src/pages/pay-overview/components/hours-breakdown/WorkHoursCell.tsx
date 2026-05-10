@@ -48,7 +48,7 @@ export default function WorkHoursCell({
 
   return (
     <div
-      className="absolute inset-x-1 z-50 overflow-hidden rounded-md bg-[#008313] text-white outline-none transition-transform duration-150 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-[#004c32]"
+      className="absolute inset-x-1 z-50 overflow-hidden rounded-md bg-work-cell text-neutral-0 outline-none transition-transform duration-150 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-brand-teal-950"
       style={{
         top: `${top}px`,
         height: `${height}px`,
@@ -61,7 +61,7 @@ export default function WorkHoursCell({
       onMouseLeave={onDeactivate}
       onMouseMove={onMove}
     >
-      {isLate ? <div className="h-2.5 bg-[#ff7f8a]" /> : null}
+      {isLate ? <div className="h-2.5 bg-late" /> : null}
       <div
         className="absolute left-2 flex items-center gap-1 text-xs leading-none"
         style={{
@@ -73,17 +73,17 @@ export default function WorkHoursCell({
         <span
           className={`h-5 w-1.5 rounded-full ${
             isLate
-              ? "bg-[#ff7f8a]"
+              ? "bg-late"
               : hasOvertime
-                ? "bg-[#28d6f5]"
-                : "bg-[#c8ffd1]"
+                ? "bg-ot"
+                : "bg-brand-teal-400"
           }`}
         />
         <span>{formatTimeRange(shift)}</span>
       </div>
       {hasOvertime ? (
         <div
-          className="absolute inset-x-0 bottom-0 bg-[#28d6f5]"
+          className="absolute inset-x-0 bottom-0 bg-ot"
           style={{ height: OVERTIME_BAND_HEIGHT }}
         />
       ) : null}

@@ -71,7 +71,7 @@ export default function TimeRow({ period = timePeriods[0] }: TimeRowProps) {
         className="relative grid grid-cols-7"
         style={{
           // The top padding is reserved for the 00:00 label, so the gray plot background starts below it.
-          backgroundImage: "linear-gradient(#f5f5f5, #f5f5f5)",
+          backgroundImage: "linear-gradient(var(--neutral-50), var(--neutral-50))",
           backgroundPosition: `0 ${TOP_PADDING}px`,
           backgroundRepeat: "no-repeat",
           backgroundSize: `100% calc(100% - ${TOP_PADDING}px)`,
@@ -86,7 +86,7 @@ export default function TimeRow({ period = timePeriods[0] }: TimeRowProps) {
           return (
             <div
               key={`${period.id}-${day.dateNumber}`}
-              className={`relative border-l border-[#555a83] ${
+              className={`relative border-l border-neutral-200 ${
                 // Add the far-right outline only to the graph area, not to the date label row.
                 isLastDay ? "border-r" : ""
               }`}
@@ -124,18 +124,18 @@ export default function TimeRow({ period = timePeriods[0] }: TimeRowProps) {
         {activeShift ? <WorkHoursCard shift={activeShift} /> : null}
       </div>
 
-      <div className="grid grid-cols-7 border-t border-[#9c9c9c]">
+      <div className="grid grid-cols-7 border-t border-neutral-500">
         {days.map((day) => (
           <div
             key={`${period.id}-${day.dateNumber}-label`}
             className="relative flex min-w-0 items-start justify-center gap-1 pt-2 text-black"
           >
             {/* Short marker lines align with the day column borders without extending through the label row. */}
-            <span className="absolute left-0 top-2 h-8 w-0.5 bg-[#555a83]" />
+            <span className="absolute left-0 top-2 h-8 w-0.5 bg-neutral-200" />
             <span className="text-2xl leading-none">{day.dateNumber}</span>
             <div className="min-w-0 pt-0.5">
               <p className="text-lg font-medium leading-none">{day.day}</p>
-              <p className="mt-2 text-xs leading-tight text-[#8e8e8e]">
+              <p className="mt-2 text-xs leading-tight text-neutral-500">
                 {day.monthYear}
               </p>
             </div>

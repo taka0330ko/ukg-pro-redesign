@@ -9,12 +9,26 @@ export default function WeekToggle({
   selectedWeekId,
   onChange,
 }: WeekToggleProps) {
+  const selectedIndex = Math.max(
+    timePeriods.findIndex((period) => period.id === selectedWeekId),
+    0,
+  );
+  const segmentWidth = `calc((100% - 0.5rem) / ${timePeriods.length})`;
+
   return (
     <div
-      className="inline-flex rounded-full bg-[#ddf9df] p-1"
+      className="relative inline-flex overflow-hidden rounded-full bg-toggle-bg p-1"
       role="tablist"
       aria-label="Select pay week"
     >
+      <span
+        className="pointer-events-none absolute bottom-1 left-1 top-1 rounded-full bg-toggle-btn transition-transform duration-700"
+        style={{
+          width: segmentWidth,
+          transform: `translateX(${selectedIndex * 100}%)`,
+          transitionTimingFunction: "var(--ease-spring)",
+        }}
+      />
       {timePeriods.map((period) => {
         const isSelected = period.id === selectedWeekId;
 
@@ -24,10 +38,10 @@ export default function WeekToggle({
             type="button"
             role="tab"
             aria-selected={isSelected}
-            className={`rounded-full px-5 py-2 text-sm transition-colors ${
+            className={`relative z-10 rounded-full px-5 py-2 text-sm transition-colors ${
               isSelected
-                ? "bg-[#004c32] text-white"
-                : "text-black hover:bg-white/50"
+                ? "text-neutral-0"
+                : "text-neutral-950 hover:bg-toggle-btn-hover/40"
             }`}
             onClick={() => onChange(period.id)}
           >

@@ -10,6 +10,12 @@ type PieChartProps = {
   netPay: number;
 };
 
+function cssVar(name: string) {
+  return getComputedStyle(document.documentElement)
+    .getPropertyValue(name)
+    .trim();
+}
+
 export default function PieChart({ deductions, netPay }: PieChartProps) {
   const chartRef = useRef<HTMLDivElement>(null);
 
@@ -17,6 +23,11 @@ export default function PieChart({ deductions, netPay }: PieChartProps) {
     if (!chartRef.current) {
       return undefined;
     }
+
+    const neutral0 = cssVar("--neutral-0");
+    const neutral950 = cssVar("--neutral-950");
+    const teal200 = cssVar("--brand-teal-200");
+    const teal600 = cssVar("--brand-teal-600");
 
     const chart = Highcharts.chart(chartRef.current, {
       chart: {
@@ -40,7 +51,7 @@ export default function PieChart({ deductions, netPay }: PieChartProps) {
           animation: {
             duration: 180,
           },
-          borderColor: "#ffffff",
+          borderColor: neutral0,
           borderWidth: 5,
           center: ["50%", "55%"],
           dataLabels: {
@@ -48,7 +59,7 @@ export default function PieChart({ deductions, netPay }: PieChartProps) {
             distance: 28,
             format: "{point.name}<br/>${point.y:.2f}",
             style: {
-              color: "#000000",
+              color: neutral950,
               fontSize: "14px",
               fontWeight: "400",
               textOutline: "none",
@@ -66,7 +77,7 @@ export default function PieChart({ deductions, netPay }: PieChartProps) {
           },
           slicedOffset: 8,
           size: 240,
-          startAngle: 0,
+          startAngle: -48,
           states: {
             hover: {
               brightness: 0,
@@ -84,12 +95,12 @@ export default function PieChart({ deductions, netPay }: PieChartProps) {
             {
               name: "Deductions",
               y: deductions,
-              color: "#00BDB3",
+              color: teal200,
             },
             {
               name: "Net pay",
               y: netPay,
-              color: "#0097C2",
+              color: teal600,
             },
           ],
         },

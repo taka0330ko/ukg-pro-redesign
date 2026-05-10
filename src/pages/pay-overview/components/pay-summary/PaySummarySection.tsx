@@ -27,7 +27,7 @@ export default function PaySummarySection() {
   ];
 
   return (
-    <section className="min-w-0 min-h-[520px] rounded-2xl border border-[#d0d0d0] bg-white p-4">
+    <section className="min-w-0 min-h-[520px] rounded-2xl border border-neutral-300 bg-neutral-0 p-4">
       <h3 className="text-2xl font-medium text-black">Pay Summary</h3>
 
       <PieChart
@@ -43,7 +43,7 @@ export default function PaySummarySection() {
           </div>
         ))}
 
-        <div className="border-t border-[#b8b8b8] pt-5">
+        <div className="border-t border-neutral-400 pt-5">
           <div className="flex items-center justify-between gap-6 font-bold">
             <span>Take home pay</span>
             <span>{formatCurrency(paySummary.netPay)}</span>
@@ -54,7 +54,7 @@ export default function PaySummarySection() {
       <div className="mt-9 flex justify-center">
         <button
           type="button"
-          className="inline-flex items-center gap-4 rounded-full bg-[#008313] px-6 py-3 text-base font-medium text-white"
+          className="inline-flex items-center gap-4 rounded-full bg-btn-primary px-6 py-3 text-base font-medium text-neutral-950 hover:bg-btn-hover"
         >
           <span className="relative flex size-8 shrink-0 items-center justify-center">
             <FileText className="size-8" strokeWidth={2.4} />

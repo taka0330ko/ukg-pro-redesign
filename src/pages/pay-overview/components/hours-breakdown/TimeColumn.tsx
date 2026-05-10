@@ -23,10 +23,10 @@ export default function TimeColumn() {
             className="absolute left-0 flex w-full items-center"
             style={{ top: `${top}px` }}
           >
-            <span className="absolute -left-16 w-12 text-right text-sm leading-none text-[#8e8e8e]">
+            <span className="absolute -left-16 w-12 text-right text-sm leading-none text-neutral-500">
               {time}
             </span>
-            <span className="h-px flex-1 bg-[#9c9c9c]" />
+            <span className="h-px flex-1 bg-neutral-500" />
           </div>
         );
       })}

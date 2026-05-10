@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Building2,
   CalendarClock,
@@ -18,24 +19,39 @@ type SideMenuPanelProps = {
 };
 
 export function SideMenuPanel({ isOpen, onClose }: SideMenuPanelProps) {
+  const [hasScrolledNav, setHasScrolledNav] = useState(false);
+
   return (
     <aside
-      className={`fixed inset-y-0 left-0 z-99 h-screen w-[260px] max-w-full overflow-y-auto bg-[#e5e8e9] transition-transform duration-300 ease-in-out md:sticky md:top-0 md:z-auto md:translate-x-0 ${
+      className={`fixed inset-y-0 left-0 z-99 flex h-screen w-[260px] max-w-full flex-col overflow-hidden bg-menu-bar-bg transition-transform duration-300 ease-in-out md:sticky md:top-0 md:z-auto md:translate-x-0 ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      <button
-        aria-label="Close side menu"
-        className="ml-3 mt-2 rounded-full p-1 text-[#777b7d] hover:bg-black/10 cursor-pointer"
-        type="button"
-        onClick={onClose}
-      >
-        <X className="h-6 w-6" strokeWidth={2.2} />
-      </button>
-      <SideMenuUserSummary />
+      <div className="relative z-20 shrink-0 bg-menu-bar-bg pb-8">
+        <button
+          aria-label="Close side menu"
+          className="ml-3 mt-2 cursor-pointer rounded-full p-1 text-neutral-600 hover:bg-neutral-950/10"
+          type="button"
+          onClick={onClose}
+        >
+          <X className="h-6 w-6" strokeWidth={2.2} />
+        </button>
+        <SideMenuUserSummary />
 
-      <nav className="mt-36 px-5 pb-10">
-        <p className="mb-5 text-[16px] font-medium text-[#55595a]">Myself</p>
+        <div
+          className={`pointer-events-none absolute inset-x-0 bottom-0 h-5 translate-y-full bg-gradient-to-b from-black/18 to-transparent transition-opacity duration-200 ${
+            hasScrolledNav ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      </div>
+
+      <nav
+        className="min-h-0 flex-1 overflow-y-auto px-5 pb-10 pt-8"
+        onScroll={(event) => {
+          setHasScrolledNav(event.currentTarget.scrollTop > 0);
+        }}
+      >
+        <p className="mb-5 text-[16px] font-medium text-neutral-700">Myself</p>
 
         <div className="space-y-2">
           <SideMenuItem icon={CalendarClock} label="Time" showChevron />
@@ -56,13 +72,14 @@ export function SideMenuPanel({ isOpen, onClose }: SideMenuPanelProps) {
           <SideMenuItem icon={Building2} label="Company" showChevron />
         </div>
 
-        <div className="my-8 h-px bg-[#c8cbcc]" />
+        <div className="my-8 h-px bg-neutral-300" />
 
         <div className="space-y-3">
           <SideMenuItem icon={Home} label="Home" showChevron />
           <SideMenuItem icon={LogOut} label="Sign out" showChevron />
         </div>
       </nav>
+
     </aside>
   );
 }

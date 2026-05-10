@@ -1,28 +1,157 @@
 @import "tailwindcss";
 
+:root{
+  /* =========================
+   BRAND LIME
+  ========================= */
+
+  --brand-lime-50:  #FCFFE5;
+  --brand-lime-100: #F8FFBF;
+  --brand-lime-200: #F3FF8A;
+  --brand-lime-300: #EEFF52;
+  --brand-lime-400: #E9FF33;
+  --brand-lime-500: #E5FF1F;
+  --brand-lime-600: #E2E800;
+  --brand-lime-700: #BCC000;
+  --brand-lime-800: #8D9100;
+  --brand-lime-900: #5E6100;
+  --brand-lime-950: #313300;
+
+  /* =========================
+   BRAND TEAL
+  ========================= */
+
+  --brand-teal-50:  #EEFDFA;
+  --brand-teal-100: #CEF5F1;
+  --brand-teal-200: #9CEBE2;
+  --brand-teal-300: #6BE1D3;
+  --brand-teal-400: #30CEBB;
+  --brand-teal-500: #00BBA8;
+  --brand-teal-600: #009789;
+  --brand-teal-700: #00786F;
+  --brand-teal-800: #00605A;
+  --brand-teal-900: #005151;
+  --brand-teal-950: #00302E;
+
+  /* =========================
+   NEUTRAL
+  ========================= */
+
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #FEFCFA;
+  --neutral-100: #F7F3EE;
+  --neutral-200: #EEE9E2;
+  --neutral-300: #DDD7CF;
+  --neutral-400: #B8B1A8;
+  --neutral-500: #918A82;
+  --neutral-600: #6E6861;
+  --neutral-700: #4F4A45;
+  --neutral-800: #2F2C28;
+  --neutral-900: #171513;
+  --neutral-950: #000000;
+
+  /* =========================
+   TYPOGRAPHY
+  ========================= */
+
+  --font-primary: "DM Sans", sans-serif;
+
+  /* =========================
+   SEMANTIC
+  ========================= */
+
+  --semantic-late: #FF828E;
+  --semantic-ot: #8DD7FF;
+  --semantic-work-cell: var(--brand-teal-900);
+  --semantic-shift-card: var(--brand-lime-50);
+  --semantic-btn-primary: var(--brand-lime-500);
+  --semantic-btn-hover: var(--brand-lime-600);
+  --semantic-btn-secondary: var(--brand-teal-900);
+  --semantic-btn-secondary-hover: var(--brand-teal-700);
+  --semantic-toggle-bg: var(--brand-teal-200);
+  --semantic-toggle-btn: var(--brand-teal-900);
+  --semantic-toggle-btn-hover: var(--brand-teal-400);
+  --semantic-menu-bar-bg: var(--neutral-100);
+  --semantic-bg: var(--neutral-50);
+
+ --ease-spring: linear(0, 0.0107, 0.0398, 0.0834, 0.138, 0.2003, 0.2677, 0.3379, 0.4089, 0.4791, 0.5471, 0.612, 0.6731, 0.7297, 0.7815, 0.8283, 0.87, 0.9068, 0.9388, 0.9662, 0.9892, 1.0083, 1.0237, 1.0357, 1.0449, 1.0514, 1.0556, 1.058, 1.0587, 1.0581, 1.0563, 1.0538, 1.0506, 1.0469, 1.043, 1.0388, 1.0347, 1.0306, 1.0266, 1.0228, 1.0192, 1.0159, 1.0128, 1.0101, 1.0076, 1.0055, 1.0036, 1.002, 1.0006, 0.9995, 0.9986, 0.9979, 0.9974, 0.997, 0.9967, 0.9966, 0.9966, 0.9966, 0.9967, 0.9968, 0.997, 0.9972, 0.9975, 0.9977, 0.998, 0.9982, 0.9984, 0.9987, 0.9989, 0.9991, 0.9992, 0.9994, 0.9996, 0.9997, 0.9998, 0.9999, 1, 1, 1.0001, 1.0001, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0001, 1.0001, 1.0001, 1.0001, 1.0001, 1.0001, 1.0001, 1.0001, 1, 1, 1);
+
+}
+
 @theme {
   /* Colors */
-  --color-bg-page: #f5f5f5;
-  --color-bg-main: #ffffff;
-  --color-bg-sidebar: #e5e5e5;
-  --color-bg-card: #fbfffb;
+  --color-brand-lime-50: var(--brand-lime-50);
+  --color-brand-lime-100: var(--brand-lime-100);
+  --color-brand-lime-200: var(--brand-lime-200);
+  --color-brand-lime-300: var(--brand-lime-300);
+  --color-brand-lime-400: var(--brand-lime-400);
+  --color-brand-lime-500: var(--brand-lime-500);
+  --color-brand-lime-600: var(--brand-lime-600);
+  --color-brand-lime-700: var(--brand-lime-700);
+  --color-brand-lime-800: var(--brand-lime-800);
+  --color-brand-lime-900: var(--brand-lime-900);
+  --color-brand-lime-950: var(--brand-lime-950);
 
-  --color-brand: #008313;
-  --color-brand-dark: #004c32;
-  --color-brand-soft: #dcfddd;
+  --color-brand-teal-50: var(--brand-teal-50);
+  --color-brand-teal-100: var(--brand-teal-100);
+  --color-brand-teal-200: var(--brand-teal-200);
+  --color-brand-teal-300: var(--brand-teal-300);
+  --color-brand-teal-400: var(--brand-teal-400);
+  --color-brand-teal-500: var(--brand-teal-500);
+  --color-brand-teal-600: var(--brand-teal-600);
+  --color-brand-teal-700: var(--brand-teal-700);
+  --color-brand-teal-800: var(--brand-teal-800);
+  --color-brand-teal-900: var(--brand-teal-900);
+  --color-brand-teal-950: var(--brand-teal-950);
 
-  --color-accent-blue: #0799bd;
-  --color-accent-teal: #13b9b6;
+  --color-neutral-0: var(--neutral-0);
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-900: var(--neutral-900);
+  --color-neutral-950: var(--neutral-950);
 
-  --color-text-main: #000000;
-  --color-text-muted: #6f6f6f;
-  --color-text-light: #9b9b9b;
+  --color-late: var(--semantic-late);
+  --color-ot: var(--semantic-ot);
+  --color-work-cell: var(--semantic-work-cell);
+  --color-shift-card: var(--semantic-shift-card);
+  --color-btn-primary: var(--semantic-btn-primary);
+  --color-btn-hover: var(--semantic-btn-hover);
+  --color-btn-secondary: var(--semantic-btn-secondary);
+  --color-btn-secondary-hover: var(--semantic-btn-secondary-hover);
+  --color-toggle-bg: var(--semantic-toggle-bg);
+  --color-toggle-btn: var(--semantic-toggle-btn);
+  --color-toggle-btn-hover: var(--semantic-toggle-btn-hover);
+  --color-menu-bar-bg: var(--semantic-menu-bar-bg);
+  --color-bg: var(--semantic-bg);
 
-  --color-border-soft: #e3eee3;
-  --color-border-table: #d4d4d4;
+  --color-bg-page: var(--neutral-50);
+  --color-bg-main: var(--neutral-0);
+  --color-bg-sidebar: var(--semantic-menu-bar-bg);
+  --color-bg-card: var(--neutral-0);
+
+  --color-brand: var(--brand-teal-900);
+  --color-brand-dark: var(--brand-teal-950);
+  --color-brand-soft: var(--brand-teal-100);
+
+  --color-accent-blue: var(--brand-teal-600);
+  --color-accent-teal: var(--brand-teal-500);
+
+  --color-text-main: var(--neutral-950);
+  --color-text-muted: var(--neutral-600);
+  --color-text-light: var(--neutral-500);
+
+  --color-border-soft: var(--neutral-300);
+  --color-border-table: var(--neutral-400);
 
   /* Font */
-  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-primary);
 
   /* Radius */
   --radius-card: 28px;
@@ -124,7 +253,7 @@
   }
 
   .nav-item-active {
-    @apply bg-[#cfcfcf] font-bold;
+    @apply bg-neutral-300 font-bold;
   }
 }
 

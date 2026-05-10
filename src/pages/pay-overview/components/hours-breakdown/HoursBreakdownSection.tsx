@@ -25,7 +25,7 @@ export default function HoursBreakdownSection() {
   );
 
   return (
-    <section className="min-w-0 min-h-[520px] rounded-2xl border border-[#d0d0d0] bg-white p-4">
+    <section className="min-w-0 min-h-[520px] rounded-2xl border border-neutral-300 bg-neutral-0 p-4">
       <div className="flex items-start justify-between">
         <h3 className="text-2xl font-medium text-black">Hours breakdown</h3>
       </div>
@@ -64,11 +64,11 @@ export default function HoursBreakdownSection() {
                 <div className="flex min-w-0 items-center gap-2">
                   <span
                     className={`h-6 w-2 shrink-0 rounded-full ${
-                      isSelected ? "bg-[#008313]" : "bg-transparent"
+                      isSelected ? "bg-brand-teal-500" : "bg-transparent"
                     }`}
                   />
                   <span className="shrink-0">{period.label}</span>
-                  <span className="truncate text-[#777777]">
+                  <span className="truncate text-neutral-500">
                     {formatDate(period.range.start)} -{" "}
                     {formatDate(period.range.end)}
                   </span>
@@ -81,7 +81,7 @@ export default function HoursBreakdownSection() {
           })}
         </div>
 
-        <div className="mt-4 border-t border-[#b8b8b8] pt-5">
+        <div className="mt-4 border-t border-neutral-400 pt-5">
           <div className="grid grid-cols-[1fr_auto] items-center gap-4 font-bold">
             <span>Total hours</span>
             <span>{totalHours.toFixed(2)} Hours</span>
