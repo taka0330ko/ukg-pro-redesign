@@ -68,9 +68,9 @@
   --semantic-btn-hover: var(--brand-lime-600);
   --semantic-btn-secondary: var(--brand-teal-900);
   --semantic-btn-secondary-hover: var(--brand-teal-700);
-  --semantic-toggle-bg: var(--brand-teal-200);
+  --semantic-toggle-bg: var(--brand-teal-400);
   --semantic-toggle-btn: var(--brand-teal-900);
-  --semantic-toggle-btn-hover: var(--brand-teal-400);
+  --semantic-toggle-btn-hover: var(--brand-teal-600);
   --semantic-menu-bar-bg: var(--neutral-100);
   --semantic-bg: var(--neutral-50);
 
