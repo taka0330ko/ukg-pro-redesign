@@ -1,4 +1,4 @@
-import type { MouseEvent } from "react";
+import { useState, type MouseEvent } from "react";
 import { timePeriods } from "../../data/payOverviewData";
 
 type Shift = (typeof timePeriods)[number]["shifts"][number];
@@ -46,9 +46,14 @@ export default function WorkHoursCell({
     MIN_CELL_HEIGHT,
   );
 
+  const [cursorPosition, setCursorPosition] = useState({
+    x: 0,
+    y: 0,
+  });
+
   return (
     <div
-      className="absolute inset-x-1 z-50 overflow-hidden rounded-md bg-work-cell text-neutral-0 outline-none transition-transform duration-150 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-brand-teal-950"
+      className="group absolute inset-x-1 z-50 cursor-none overflow-hidden rounded-md bg-work-cell text-neutral-0 outline-none transition-transform duration-150 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-brand-teal-950"
       style={{
         top: `${top}px`,
         height: `${height}px`,
@@ -57,10 +62,36 @@ export default function WorkHoursCell({
       role="button"
       tabIndex={0}
       onBlur={onDeactivate}
-      onMouseEnter={(event) => onActivate?.(shift, event)}
+      onMouseEnter={(event) => {
+        onActivate?.(shift, event);
+        onMove?.(event);
+
+        const rect = event.currentTarget.getBoundingClientRect();
+
+        setCursorPosition({
+          x: event.clientX - rect.left,
+          y: event.clientY - rect.top,
+        });
+      }}
       onMouseLeave={onDeactivate}
-      onMouseMove={onMove}
+      onMouseMove={(event) => {
+        onMove?.(event);
+
+        const rect = event.currentTarget.getBoundingClientRect();
+
+        setCursorPosition({
+          x: event.clientX - rect.left,
+          y: event.clientY - rect.top,
+        });
+      }}
     >
+      <div
+        className="pointer-events-none absolute z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-teal-400 opacity-80 transition-all duration-75 group-hover:scale-100 scale-0"
+        style={{
+          left: `${cursorPosition.x}px`,
+          top: `${cursorPosition.y}px`,
+        }}
+      />
       {isLate ? <div className="h-2.5 bg-late" /> : null}
       <div
         className="absolute left-2 flex items-center gap-1 text-xs leading-none"

@@ -41,7 +41,7 @@ export default function WeekToggle({
             className={`relative z-10 rounded-full px-5 py-2 text-sm transition-colors ${
               isSelected
                 ? "text-neutral-0"
-                : "text-neutral-950 hover:bg-toggle-btn-hover/40"
+                : "text-neutral-950 hover:bg-toggle-btn-hover/40 cursor-pointer "
             }`}
             onClick={() => onChange(period.id)}
           >

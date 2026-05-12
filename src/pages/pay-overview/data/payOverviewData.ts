@@ -27,7 +27,11 @@ export const timePeriods = [
           clockOut: "22:15",
         },
 
-        breaks: [],
+        breaks: [          {
+            start: "20:18",
+            end: "20:33",
+            paid: true,
+          },],
 
         workHours: 4.42,
         overtimeHours: 0,
@@ -83,7 +87,13 @@ export const timePeriods = [
           clockOut: "22:45",
         },
 
-        breaks: [],
+        breaks: [
+                    {
+            start: "20:36",
+            end: "17:51",
+            paid: true,
+          },
+        ],
 
         workHours: 4.92,
         overtimeHours: 0,
@@ -181,7 +191,13 @@ export const timePeriods = [
           clockOut: "22:45",
         },
 
-        breaks: [],
+        breaks: [
+          {
+            start: "20:05",
+            end: "20:20",
+            paid: true,
+          },
+        ],
 
         workHours: 4.92,
         overtimeHours: 0,
