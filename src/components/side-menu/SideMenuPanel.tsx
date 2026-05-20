@@ -23,14 +23,14 @@ export function SideMenuPanel({ isOpen, onClose }: SideMenuPanelProps) {
 
   return (
     <aside
-      className={`fixed inset-y-0 left-0 z-99 flex h-screen w-[260px] max-w-full flex-col overflow-hidden bg-menu-bar-bg transition-transform duration-300 ease-in-out md:sticky md:top-0 md:z-auto md:translate-x-0 ${
+      className={`sidebar-panel fixed inset-y-0 left-0 z-99 flex h-screen w-[260px] max-w-full flex-col overflow-hidden transition-transform duration-300 ease-in-out md:sticky md:top-0 md:z-auto md:translate-x-0 ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      <div className="relative z-20 shrink-0 bg-menu-bar-bg pb-8">
+      <div className="sidebar-panel relative z-20 shrink-0 pb-8">
         <button
           aria-label="Close side menu"
-          className="ml-3 mt-2 cursor-pointer rounded-full p-1 text-neutral-600 hover:bg-neutral-950/10"
+          className="sidebar-close-button ml-3 mt-2 cursor-pointer rounded-full p-1"
           type="button"
           onClick={onClose}
         >
@@ -51,7 +51,7 @@ export function SideMenuPanel({ isOpen, onClose }: SideMenuPanelProps) {
           setHasScrolledNav(event.currentTarget.scrollTop > 0);
         }}
       >
-        <p className="mb-5 text-[16px] font-medium text-neutral-700">Myself</p>
+        <p className="sidebar-section-title mb-5 text-[16px] font-medium">Myself</p>
 
         <div className="space-y-2">
           <SideMenuItem icon={CalendarClock} label="Time" showChevron />
@@ -72,7 +72,7 @@ export function SideMenuPanel({ isOpen, onClose }: SideMenuPanelProps) {
           <SideMenuItem icon={Building2} label="Company" showChevron />
         </div>
 
-        <div className="my-8 h-px bg-neutral-300" />
+        <div className="rule-primary my-8 h-px" />
 
         <div className="space-y-3">
           <SideMenuItem icon={Home} label="Home" showChevron />

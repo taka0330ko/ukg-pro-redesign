@@ -17,12 +17,12 @@ export default function WeekToggle({
 
   return (
     <div
-      className="relative inline-flex overflow-hidden rounded-full bg-toggle-bg p-1"
+      className="toggle relative inline-flex overflow-hidden rounded-full p-1"
       role="tablist"
       aria-label="Select pay week"
     >
       <span
-        className="pointer-events-none absolute bottom-1 left-1 top-1 rounded-full bg-toggle-btn transition-transform duration-700"
+        className="toggle-thumb pointer-events-none absolute bottom-1 left-1 top-1 rounded-full transition-transform duration-700"
         style={{
           width: segmentWidth,
           transform: `translateX(${selectedIndex * 100}%)`,
@@ -40,8 +40,8 @@ export default function WeekToggle({
             aria-selected={isSelected}
             className={`relative z-10 rounded-full px-5 py-2 text-sm transition-colors ${
               isSelected
-                ? "text-neutral-0"
-                : "text-neutral-950 hover:bg-toggle-btn-hover/40 cursor-pointer "
+                ? "toggle-tab-active"
+                : "toggle-tab-idle cursor-pointer"
             }`}
             onClick={() => onChange(period.id)}
           >

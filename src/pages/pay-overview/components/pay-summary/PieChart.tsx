@@ -24,10 +24,10 @@ export default function PieChart({ deductions, netPay }: PieChartProps) {
       return undefined;
     }
 
-    const neutral0 = cssVar("--neutral-0");
-    const neutral950 = cssVar("--neutral-950");
-    const teal200 = cssVar("--brand-teal-200");
-    const teal600 = cssVar("--brand-teal-600");
+    const surface = cssVar("--color-neutral-0");
+    const textPrimary = cssVar("--color-text-primary");
+    const deductionsColor = cssVar("--color-teal-200");
+    const netPayColor = cssVar("--color-teal-600");
 
     const chart = Highcharts.chart(chartRef.current, {
       chart: {
@@ -51,7 +51,7 @@ export default function PieChart({ deductions, netPay }: PieChartProps) {
           animation: {
             duration: 180,
           },
-          borderColor: neutral0,
+          borderColor: surface,
           borderWidth: 5,
           center: ["50%", "55%"],
           dataLabels: {
@@ -59,7 +59,7 @@ export default function PieChart({ deductions, netPay }: PieChartProps) {
             distance: 28,
             format: "{point.name}<br/>${point.y:.2f}",
             style: {
-              color: neutral950,
+              color: textPrimary,
               fontSize: "14px",
               fontWeight: "400",
               textOutline: "none",
@@ -95,12 +95,12 @@ export default function PieChart({ deductions, netPay }: PieChartProps) {
             {
               name: "Deductions",
               y: deductions,
-              color: teal200,
+              color: deductionsColor,
             },
             {
               name: "Net pay",
               y: netPay,
-              color: teal600,
+              color: netPayColor,
             },
           ],
         },

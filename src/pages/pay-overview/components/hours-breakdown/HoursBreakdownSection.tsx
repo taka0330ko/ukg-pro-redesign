@@ -25,9 +25,9 @@ export default function HoursBreakdownSection() {
   );
 
   return (
-    <section className="min-w-0 min-h-[520px] rounded-2xl border border-neutral-300 bg-neutral-0 p-4">
+    <section className="panel-card calendar-card min-h-[520px] min-w-0">
       <div className="flex items-start justify-between">
-        <h3 className="text-2xl font-medium text-black">Hours breakdown</h3>
+        <h3 className="section-title">Hours breakdown</h3>
       </div>
       <div className="flex justify-center mt-4">
         <WeekToggle
@@ -48,7 +48,7 @@ export default function HoursBreakdownSection() {
         </div>
       </figure>
 
-      <div className="mx-auto mt-8 w-full max-w-[720px] text-base text-black">
+      <div className="text-primary mx-auto mt-8 w-full max-w-[720px] text-base">
         <div className="space-y-3">
           {timePeriods.map((period) => {
             const summary = weeklySummaries.find(
@@ -64,11 +64,11 @@ export default function HoursBreakdownSection() {
                 <div className="flex min-w-0 items-center gap-2">
                   <span
                     className={`h-6 w-2 shrink-0 rounded-full ${
-                      isSelected ? "bg-brand-teal-500" : "bg-transparent"
+                      isSelected ? "week-marker-active" : "bg-transparent"
                     }`}
                   />
                   <span className="shrink-0">{period.label}</span>
-                  <span className="truncate text-neutral-500">
+                  <span className="text-secondary truncate">
                     {formatDate(period.range.start)} -{" "}
                     {formatDate(period.range.end)}
                   </span>
@@ -81,7 +81,7 @@ export default function HoursBreakdownSection() {
           })}
         </div>
 
-        <div className="mt-4 border-t border-neutral-400 pt-5">
+        <div className="divider-primary mt-4 border-t pt-5">
           <div className="grid grid-cols-[1fr_auto] items-center gap-4 font-bold">
             <span>Total hours</span>
             <span>{totalHours.toFixed(2)} Hours</span>

@@ -8,10 +8,10 @@ type AppLayoutProps = {
 
 export function AppLayout({ children }: AppLayoutProps) {
   return (
-    <div className="flex min-h-screen bg-white">
+    <div className="workspace-bg flex min-h-screen">
       <SideMenu />
       <div className="min-w-0 flex-1">
-        <div className="flex z-60 items-center fixed bg-white w-full px-4 pb-4">
+        <div className="workspace-bg fixed z-60 flex w-full items-center px-4 pb-4">
           <SideMenuToggleButton />
           <AppHeader />
         </div>

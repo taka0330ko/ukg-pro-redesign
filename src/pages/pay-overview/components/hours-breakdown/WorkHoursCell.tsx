@@ -53,7 +53,7 @@ export default function WorkHoursCell({
 
   return (
     <div
-      className="group absolute inset-x-1 z-50 cursor-none overflow-hidden rounded-md bg-work-cell text-neutral-0 outline-none transition-transform duration-150 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-brand-teal-950"
+      className="work-cell group absolute inset-x-1 z-50 cursor-none overflow-hidden rounded-md outline-none transition-transform duration-150 hover:scale-[1.02] focus-visible:ring-2"
       style={{
         top: `${top}px`,
         height: `${height}px`,
@@ -86,13 +86,13 @@ export default function WorkHoursCell({
       }}
     >
       <div
-        className="pointer-events-none absolute z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-teal-400 opacity-80 transition-all duration-75 group-hover:scale-100 scale-0"
+        className="work-cell-cursor pointer-events-none absolute z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 scale-0 rounded-full opacity-80 transition-all duration-75 group-hover:scale-100"
         style={{
           left: `${cursorPosition.x}px`,
           top: `${cursorPosition.y}px`,
         }}
       />
-      {isLate ? <div className="h-2.5 bg-late" /> : null}
+      {isLate ? <div className="status-late h-2.5" /> : null}
       <div
         className="absolute left-2 flex items-center gap-1 text-xs leading-none"
         style={{
@@ -104,17 +104,17 @@ export default function WorkHoursCell({
         <span
           className={`h-5 w-1.5 rounded-full ${
             isLate
-              ? "bg-late"
+              ? "status-late"
               : hasOvertime
-                ? "bg-ot"
-                : "bg-brand-teal-400"
+                ? "status-overtime"
+                : "status-regular"
           }`}
         />
         <span>{formatTimeRange(shift)}</span>
       </div>
       {hasOvertime ? (
         <div
-          className="absolute inset-x-0 bottom-0 bg-ot"
+          className="status-overtime absolute inset-x-0 bottom-0"
           style={{ height: OVERTIME_BAND_HEIGHT }}
         />
       ) : null}

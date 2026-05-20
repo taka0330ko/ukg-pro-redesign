@@ -1,268 +1,319 @@
 @import "tailwindcss";
 
-:root{
-  /* =========================
-   BRAND LIME
-  ========================= */
+/* 1. Primitive tokens */
+:root {
+  --color-teal-50: #eefdfa;
+  --color-teal-100: #cef5f1;
+  --color-teal-200: #8de9e2;
+  --color-teal-300: #5edbd1;
+  --color-teal-400: #30cebb;
+  --color-teal-500: #00bba8;
+  --color-teal-600: #009789;
+  --color-teal-700: #00786f;
+  --color-teal-800: #00605a;
+  --color-teal-900: #005151;
+  --color-teal-950: #00302e;
 
-  --brand-lime-50:  #FCFFE5;
-  --brand-lime-100: #F8FFBF;
-  --brand-lime-200: #F3FF8A;
-  --brand-lime-300: #EEFF52;
-  --brand-lime-400: #E9FF33;
-  --brand-lime-500: #E5FF1F;
-  --brand-lime-600: #E2E800;
-  --brand-lime-700: #BCC000;
-  --brand-lime-800: #8D9100;
-  --brand-lime-900: #5E6100;
-  --brand-lime-950: #313300;
+  --color-lime-50: #fcffe5;
+  --color-lime-100: #f8ffbf;
+  --color-lime-200: #f3ff8a;
+  --color-lime-300: #eeff52;
+  --color-lime-400: #e9ff33;
+  --color-lime-500: #e5ff1f;
+  --color-lime-600: #e2e800;
+  --color-lime-700: #bccc00;
+  --color-lime-800: #8d9100;
+  --color-lime-900: #8d9100;
+  --color-lime-950: #313300;
 
-  /* =========================
-   BRAND TEAL
-  ========================= */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #fefcfa;
+  --color-neutral-100: #f7f3ee;
+  --color-neutral-200: #eee9e2;
+  --color-neutral-300: #ddd7cf;
+  --color-neutral-400: #b8b1a8;
+  --color-neutral-500: #918a82;
+  --color-neutral-600: #6e6861;
+  --color-neutral-700: #4f4a45;
+  --color-neutral-800: #2f2c28;
+  --color-neutral-900: #171513;
+  --color-neutral-950: #000000;
 
-  --brand-teal-50:  #EEFDFA;
-  --brand-teal-100: #CEF5F1;
-  --brand-teal-200: #9CEBE2;
-  --brand-teal-300: #6BE1D3;
-  --brand-teal-400: #30CEBB;
-  --brand-teal-500: #00BBA8;
-  --brand-teal-600: #009789;
-  --brand-teal-700: #00786F;
-  --brand-teal-800: #00605A;
-  --brand-teal-900: #005151;
-  --brand-teal-950: #00302E;
-
-  /* =========================
-   NEUTRAL
-  ========================= */
-
-  --neutral-0:   #FFFFFF;
-  --neutral-50:  #FEFCFA;
-  --neutral-100: #F7F3EE;
-  --neutral-200: #EEE9E2;
-  --neutral-300: #DDD7CF;
-  --neutral-400: #B8B1A8;
-  --neutral-500: #918A82;
-  --neutral-600: #6E6861;
-  --neutral-700: #4F4A45;
-  --neutral-800: #2F2C28;
-  --neutral-900: #171513;
-  --neutral-950: #000000;
-
-  /* =========================
-   TYPOGRAPHY
-  ========================= */
-
-  --font-primary: "DM Sans", sans-serif;
-
-  /* =========================
-   SEMANTIC
-  ========================= */
-
-  --semantic-late: #FF828E;
-  --semantic-ot: #8DD7FF;
-  --semantic-work-cell: var(--brand-teal-900);
-  --semantic-shift-card: var(--brand-lime-50);
-  --semantic-btn-primary: var(--brand-lime-500);
-  --semantic-btn-hover: var(--brand-lime-600);
-  --semantic-btn-secondary: var(--brand-teal-900);
-  --semantic-btn-secondary-hover: var(--brand-teal-700);
-  --semantic-toggle-bg: var(--brand-teal-400);
-  --semantic-toggle-btn: var(--brand-teal-900);
-  --semantic-toggle-btn-hover: var(--brand-teal-600);
-  --semantic-menu-bar-bg: var(--neutral-100);
-  --semantic-bg: var(--neutral-50);
-
+  --color-status-late: #ff828e;
+  --color-status-overtime: #8dd7ff;
+   --font-primary: "DM Sans", sans-serif;
  --ease-spring: linear(0, 0.0107, 0.0398, 0.0834, 0.138, 0.2003, 0.2677, 0.3379, 0.4089, 0.4791, 0.5471, 0.612, 0.6731, 0.7297, 0.7815, 0.8283, 0.87, 0.9068, 0.9388, 0.9662, 0.9892, 1.0083, 1.0237, 1.0357, 1.0449, 1.0514, 1.0556, 1.058, 1.0587, 1.0581, 1.0563, 1.0538, 1.0506, 1.0469, 1.043, 1.0388, 1.0347, 1.0306, 1.0266, 1.0228, 1.0192, 1.0159, 1.0128, 1.0101, 1.0076, 1.0055, 1.0036, 1.002, 1.0006, 0.9995, 0.9986, 0.9979, 0.9974, 0.997, 0.9967, 0.9966, 0.9966, 0.9966, 0.9967, 0.9968, 0.997, 0.9972, 0.9975, 0.9977, 0.998, 0.9982, 0.9984, 0.9987, 0.9989, 0.9991, 0.9992, 0.9994, 0.9996, 0.9997, 0.9998, 0.9999, 1, 1, 1.0001, 1.0001, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0001, 1.0001, 1.0001, 1.0001, 1.0001, 1.0001, 1.0001, 1.0001, 1, 1, 1);
-
 }
 
-@theme {
-  /* Colors */
-  --color-brand-lime-50: var(--brand-lime-50);
-  --color-brand-lime-100: var(--brand-lime-100);
-  --color-brand-lime-200: var(--brand-lime-200);
-  --color-brand-lime-300: var(--brand-lime-300);
-  --color-brand-lime-400: var(--brand-lime-400);
-  --color-brand-lime-500: var(--brand-lime-500);
-  --color-brand-lime-600: var(--brand-lime-600);
-  --color-brand-lime-700: var(--brand-lime-700);
-  --color-brand-lime-800: var(--brand-lime-800);
-  --color-brand-lime-900: var(--brand-lime-900);
-  --color-brand-lime-950: var(--brand-lime-950);
+/* 2. Semantic tokens */
+:root {
+  --color-icon-primary: var(--color-neutral-0);
+  --color-icon-secondary: var(--color-teal-900);
+  --color-icon-inverse: var(--color-neutral-0);
 
-  --color-brand-teal-50: var(--brand-teal-50);
-  --color-brand-teal-100: var(--brand-teal-100);
-  --color-brand-teal-200: var(--brand-teal-200);
-  --color-brand-teal-300: var(--brand-teal-300);
-  --color-brand-teal-400: var(--brand-teal-400);
-  --color-brand-teal-500: var(--brand-teal-500);
-  --color-brand-teal-600: var(--brand-teal-600);
-  --color-brand-teal-700: var(--brand-teal-700);
-  --color-brand-teal-800: var(--brand-teal-800);
-  --color-brand-teal-900: var(--brand-teal-900);
-  --color-brand-teal-950: var(--brand-teal-950);
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-700);
+  --color-text-inverse: var(--color-neutral-0);
 
-  --color-neutral-0: var(--neutral-0);
-  --color-neutral-50: var(--neutral-50);
-  --color-neutral-100: var(--neutral-100);
-  --color-neutral-200: var(--neutral-200);
-  --color-neutral-300: var(--neutral-300);
-  --color-neutral-400: var(--neutral-400);
-  --color-neutral-500: var(--neutral-500);
-  --color-neutral-600: var(--neutral-600);
-  --color-neutral-700: var(--neutral-700);
-  --color-neutral-800: var(--neutral-800);
-  --color-neutral-900: var(--neutral-900);
-  --color-neutral-950: var(--neutral-950);
+  --color-surface-primary: var(--color-neutral-50);
+  --color-surface-secondary: var(--color-neutral-100);
+  --color-surface-tertiary: var(--color-lime-50);
+  --color-surface-brand: var(--color-teal-900);
 
-  --color-late: var(--semantic-late);
-  --color-ot: var(--semantic-ot);
-  --color-work-cell: var(--semantic-work-cell);
-  --color-shift-card: var(--semantic-shift-card);
-  --color-btn-primary: var(--semantic-btn-primary);
-  --color-btn-hover: var(--semantic-btn-hover);
-  --color-btn-secondary: var(--semantic-btn-secondary);
-  --color-btn-secondary-hover: var(--semantic-btn-secondary-hover);
-  --color-toggle-bg: var(--semantic-toggle-bg);
-  --color-toggle-btn: var(--semantic-toggle-btn);
-  --color-toggle-btn-hover: var(--semantic-toggle-btn-hover);
-  --color-menu-bar-bg: var(--semantic-menu-bar-bg);
-  --color-bg: var(--semantic-bg);
+  --color-action-primary: var(--color-lime-500);
+  --color-action-primary-text: var(--color-neutral-900);
+  --color-action-primary-hover: var(--color-lime-600);
 
-  --color-bg-page: var(--neutral-50);
-  --color-bg-main: var(--neutral-0);
-  --color-bg-sidebar: var(--semantic-menu-bar-bg);
-  --color-bg-card: var(--neutral-0);
+  --color-action-secondary: var(--color-teal-900);
+  --color-action-secondary-text: var(--color-neutral-0);
+  --color-action-secondary-hover: var(--color-teal-700);
 
-  --color-brand: var(--brand-teal-900);
-  --color-brand-dark: var(--brand-teal-950);
-  --color-brand-soft: var(--brand-teal-100);
+  --color-border-primary: var(--color-neutral-300);
+  --color-border-secondary: var(--color-neutral-100);
 
-  --color-accent-blue: var(--brand-teal-600);
-  --color-accent-teal: var(--brand-teal-500);
+  --color-status-regular: var(--color-teal-400);
+}
 
-  --color-text-main: var(--neutral-950);
-  --color-text-muted: var(--neutral-600);
-  --color-text-light: var(--neutral-500);
+/* 3. Component tokens */
+:root {
+  --sidebar-bg: var(--color-surface-secondary);
+  --sidebar-text: var(--color-text-primary);
+  --sidebar-selected: var(--color-action-primary);
+  --sidebar-hover: var(--color-neutral-200);
 
-  --color-border-soft: var(--neutral-300);
-  --color-border-table: var(--neutral-400);
+  --work-cell-bg: var(--color-surface-brand);
+  --work-cell-text: var(--color-neutral-0);
 
-  /* Font */
+  --shift-card-bg: var(--color-surface-tertiary);
+
+  --workspace-bg: var(--color-surface-primary);
+
+  --notification-bg: var(--color-teal-50);
+  --notification-icon-bg: var(--color-teal-400);
+  --notification-icon-round: var(--color-teal-200);
+
+  --calendar-bg: var(--color-surface-primary);
+
+  --toggle-bg: var(--color-teal-400);
+  --toggle-btn: var(--color-action-secondary);
+  --toggle-hover: var(--color-teal-500);
+  --toggle-text: var(--color-text-inverse);
+
+  --button-primary-bg: var(--color-action-primary);
+  --button-primary-hover: var(--color-action-primary-hover);
+  --button-primary-text: var(--color-action-primary-text);
+
+  --button-secondary-bg: var(--color-action-secondary);
+  --button-secondary-hover: var(--color-action-secondary-hover);
+  --button-secondary-text: var(--color-action-secondary-text);
+
+  --time-card-bg: var(--color-surface-tertiary);
+  --time-card-line: var(--color-surface-brand);
+}
+
+@theme inline {
   --font-sans: var(--font-primary);
-
-  /* Radius */
-  --radius-card: 28px;
-  --radius-pill: 999px;
-  --radius-small: 10px;
-
-  /* Shadow */
-  --shadow-soft: 0 4px 14px rgb(0 0 0 / 0.08);
-  --shadow-sidebar: 0 2px 8px rgb(0 0 0 / 0.14);
-
-  /* Layout */
-  --spacing-sidebar: 280px;
-  --spacing-page-x: 48px;
-  --spacing-page-y: 28px;
-
-  /* Typography */
-  --text-page-title: 32px;
-  --text-page-title--line-height: 1.15;
-  --text-section-title: 24px;
-  --text-section-title--line-height: 1.2;
-  --text-body: 16px;
-  --text-body--line-height: 1.5;
-  --text-small: 13px;
-  --text-small--line-height: 1.4;
 }
 
 @layer base {
   body {
     margin: 0;
     font-family: var(--font-sans);
-    background: var(--color-bg-page);
-    color: var(--color-text-main);
+    background: var(--workspace-bg);
+    color: var(--color-text-primary);
   }
 }
 
 @layer components {
-  .layout {
-    @apply min-h-screen bg-bg-main;
+  .workspace-bg {
+    background: var(--workspace-bg);
   }
 
-  .sidebar {
-    @apply fixed left-0 top-0 h-screen w-[var(--spacing-sidebar)] bg-bg-sidebar shadow-sidebar px-6 py-6;
+  .text-primary {
+    color: var(--color-text-primary);
   }
 
-  .main-content {
-    @apply ml-[var(--spacing-sidebar)] px-[var(--spacing-page-x)] py-[var(--spacing-page-y)];
+  .text-secondary {
+    color: var(--color-text-secondary);
   }
 
-  .company-badge {
-    @apply inline-flex items-center bg-brand px-4 py-3 text-white text-body font-medium;
+  .panel-card {
+    @apply rounded-2xl border p-4;
+    border-color: var(--color-border-primary);
+    color: var(--color-text-primary);
   }
 
-  .page-title {
-    @apply mt-8 text-page-title font-bold;
+  .calendar-card {
+    background: var(--calendar-bg);
   }
 
-  .dashboard-grid {
-    @apply mt-10 grid grid-cols-2 gap-6;
-  }
-
-  .dashboard-card {
-    @apply rounded-card border border-border-soft bg-bg-card p-8;
+  .calendar-grid-bg {
+    background-image: linear-gradient(
+      var(--color-surface-primary),
+      var(--color-surface-primary)
+    );
   }
 
   .section-title {
-    @apply text-section-title font-bold;
+    @apply text-2xl font-medium;
+    color: var(--color-text-primary);
   }
 
-  .pill-tabs {
-    @apply inline-flex rounded-pill bg-brand-soft p-1;
+  .divider-primary {
+    border-color: var(--color-border-primary);
   }
 
-  .pill-tab {
-    @apply rounded-pill px-4 py-2 text-small;
+  .rule-primary {
+    background: var(--color-border-primary);
   }
 
-  .pill-tab-active {
-    @apply bg-brand-dark text-white;
+  .rule-secondary {
+    background: var(--color-border-secondary);
   }
 
-  .summary-box {
-    @apply rounded-small border border-border-table p-4;
+  .sidebar-panel {
+    background: var(--sidebar-bg);
   }
 
-  .summary-row {
-    @apply flex justify-between py-2 text-body;
+  .sidebar-close-button {
+    color: var(--color-text-secondary);
   }
 
-  .summary-total {
-    @apply border-t border-border-table pt-4 font-bold;
+  .sidebar-close-button:hover {
+    background: var(--sidebar-hover);
   }
 
-  .primary-button {
-    @apply inline-flex items-center gap-3 rounded-pill bg-brand px-5 py-3 text-white text-body;
+  .sidebar-section-title,
+  .sidebar-user-name {
+    color: var(--color-text-primary);
   }
 
-  .nav-item {
-    @apply flex items-center justify-between rounded-small px-5 py-3 text-small;
+  .sidebar-avatar {
+    background: var(--color-status-overtime);
   }
 
-  .nav-item-active {
-    @apply bg-neutral-300 font-bold;
-  }
-}
-
-@layer utilities {
-  .text-muted {
-    color: var(--color-text-muted);
+  .sidebar-item {
+    color: var(--sidebar-text);
   }
 
-  .text-light {
-    color: var(--color-text-light);
+  .sidebar-item-active {
+    background: var(--sidebar-selected);
+    color: var(--color-text-primary);
+  }
+
+  .sidebar-item-idle:hover {
+    background: var(--sidebar-hover);
+  }
+
+  .sidebar-icon {
+    color: var(--color-icon-secondary);
+  }
+
+  .notification {
+    border-color: var(--color-border-primary);
+    background: var(--notification-bg);
+    color: var(--color-text-secondary);
+  }
+
+  .notification-icon-round {
+    background: var(--notification-icon-round);
+  }
+
+  .notification-icon {
+    color: var(--color-teal-600);
+  }
+
+  .button-primary {
+    background: var(--button-primary-bg);
+    color: var(--button-primary-text);
+  }
+
+  .button-primary:hover {
+    background: var(--button-primary-hover);
+  }
+
+  .button-secondary {
+    background: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+  }
+
+  .button-secondary:hover {
+    background: var(--button-secondary-hover);
+  }
+
+  .toggle {
+    background: var(--toggle-bg);
+  }
+
+  .toggle-thumb {
+    background: var(--toggle-btn);
+  }
+
+  .toggle-tab-active {
+    color: var(--toggle-text);
+  }
+
+  .toggle-tab-idle {
+    color: var(--color-text-primary);
+  }
+
+  .toggle-tab-idle:hover {
+    background: color-mix(in oklab, var(--toggle-hover) 40%, transparent);
+  }
+
+  .calendar-grid-cell {
+    border-left: 1px solid var(--color-border-secondary);
+  }
+
+  .calendar-grid-cell-end {
+    border-right: 1px solid var(--color-border-secondary);
+  }
+
+  .calendar-date-row {
+    border-color: var(--color-border-primary);
+    color: var(--color-text-primary);
+  }
+
+  .time-grid-label {
+    color: var(--color-text-secondary);
+  }
+
+  .week-marker-active,
+  .status-regular {
+    background: var(--color-status-regular);
+  }
+
+  .status-late {
+    background: var(--color-status-late);
+  }
+
+  .status-overtime {
+    background: var(--color-status-overtime);
+  }
+
+  .surface-white {
+    background: var(--color-neutral-0);
+  }
+
+  .work-cell {
+    background: var(--work-cell-bg);
+    color: var(--work-cell-text);
+  }
+
+  .work-cell:focus-visible {
+    --tw-ring-color: var(--color-teal-950);
+  }
+
+  .work-cell-cursor {
+    background: var(--color-status-regular);
+  }
+
+  .shift-card {
+    background: var(--shift-card-bg);
+    color: var(--color-text-primary);
+  }
+
+  .time-card-line {
+    background: var(--time-card-line);
   }
 }

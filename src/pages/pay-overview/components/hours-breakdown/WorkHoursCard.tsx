@@ -32,11 +32,15 @@ export default function WorkHoursCard({ shift }: WorkHoursCardProps) {
     timeToMinutes(shift.actual.clockIn) > timeToMinutes(shift.assigned.start);
   const hasOvertime = shift.overtimeHours > 0;
   const firstBreak = shift.breaks[0];
-  const startMarkerColor = isLate ? "bg-late" : "bg-neutral-0";
-  const endMarkerColor = hasOvertime ? "bg-ot" : "bg-neutral-0";
+  const startMarkerColor = isLate
+    ? "status-late"
+    : "surface-white";
+  const endMarkerColor = hasOvertime
+    ? "status-overtime"
+    : "surface-white";
 
   return (
-    <article className="w-full max-w-[380px] rounded-md bg-shift-card p-3 text-neutral-950 shadow-md">
+    <article className="shift-card w-full max-w-[380px] rounded-md p-3 shadow-md">
       <div className="grid grid-cols-[auto_1fr_auto] items-baseline gap-x-4 gap-y-2 text-sm">
         <span>Assigned time:</span>
         <span className="text-lg">
@@ -57,14 +61,14 @@ export default function WorkHoursCard({ shift }: WorkHoursCardProps) {
         ) : null}
       </div>
 
-      <div className="mt-2 border-t border-neutral-300 pt-3">
+      <div className="divider-primary mt-2 border-t pt-3">
         <div className="grid grid-cols-[36px_1fr_auto] gap-x-4">
           <div className="relative row-span-3 flex justify-center">
-            <div className="h-full min-h-36 w-6 rounded-full bg-work-cell" />
+            <div className="time-card-line h-full min-h-36 w-6 rounded-full" />
             <span
               className={`absolute top-2 size-4 rounded-full ${startMarkerColor}`}
             />
-            <span className="absolute top-1/2 h-8 w-3 -translate-y-1/2 rounded-full bg-white" />
+            <span className="surface-white absolute top-1/2 h-8 w-3 -translate-y-1/2 rounded-full" />
             <span
               className={`absolute bottom-2 size-4 rounded-full ${endMarkerColor}`}
             />
