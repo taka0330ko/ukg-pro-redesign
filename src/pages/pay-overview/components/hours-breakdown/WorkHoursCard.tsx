@@ -27,16 +27,30 @@ function getBreakLabel(paid: boolean) {
   return paid ? "Paid break" : "Unpaid break";
 }
 
+function getStatusLabelClass(status: "late" | "earlyLeave" | "overtime") {
+  if (status === "late") {
+    return "text-status-late";
+  }
+
+  if (status === "earlyLeave") {
+    return "text-status-early-leave";
+  }
+
+  return "text-status-overtime";
+}
+
 export default function WorkHoursCard({ shift }: WorkHoursCardProps) {
   const isLate =
     timeToMinutes(shift.actual.clockIn) > timeToMinutes(shift.assigned.start);
+  const hasEarlyLeave =
+    timeToMinutes(shift.actual.clockOut) < timeToMinutes(shift.assigned.end);
   const hasOvertime = shift.overtimeHours > 0;
   const firstBreak = shift.breaks[0];
-  const startMarkerColor = isLate
-    ? "status-late"
-    : "surface-white";
+  const startMarkerColor = isLate ? "status-late" : "surface-white";
   const endMarkerColor = hasOvertime
     ? "status-overtime"
+    : hasEarlyLeave
+      ? "status-early-leave"
     : "surface-white";
 
   return (
@@ -74,7 +88,18 @@ export default function WorkHoursCard({ shift }: WorkHoursCardProps) {
             />
           </div>
 
-          <div className="text-3xl leading-none">{shift.actual.clockIn}</div>
+          <div>
+            {isLate ? (
+              <p
+                className={`${getStatusLabelClass(
+                  "late",
+                )} mb-1 text-xs leading-none`}
+              >
+                Late
+              </p>
+            ) : null}
+            <div className="text-3xl leading-none">{shift.actual.clockIn}</div>
+          </div>
           <div className="flex items-center gap-2 text-sm">
             <span>Clock in</span>
             <LogIn className="size-4" strokeWidth={2} />
@@ -97,8 +122,26 @@ export default function WorkHoursCard({ shift }: WorkHoursCardProps) {
             ) : null}
           </div>
 
-          <div className="self-end text-3xl leading-none">
-            {shift.actual.clockOut}
+          <div className="self-end">
+            {hasEarlyLeave ? (
+              <p
+                className={`${getStatusLabelClass(
+                  "earlyLeave",
+                )} mb-1 text-xs leading-none`}
+              >
+                Early Leave
+              </p>
+            ) : null}
+            {hasOvertime ? (
+              <p
+                className={`${getStatusLabelClass(
+                  "overtime",
+                )} mb-1 text-xs leading-none`}
+              >
+                Over time
+              </p>
+            ) : null}
+            <div className="text-3xl leading-none">{shift.actual.clockOut}</div>
           </div>
           <div className="flex items-center gap-2 self-end text-sm">
             <span>Clock out</span>

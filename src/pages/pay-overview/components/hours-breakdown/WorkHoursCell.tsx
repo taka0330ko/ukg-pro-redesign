@@ -38,11 +38,29 @@ export default function WorkHoursCell({
   const startMinutes = timeToMinutes(shift.actual.clockIn);
   const endMinutes = timeToMinutes(shift.actual.clockOut);
   const assignedStartMinutes = timeToMinutes(shift.assigned.start);
+  const assignedEndMinutes = timeToMinutes(shift.assigned.end);
   const isLate = startMinutes > assignedStartMinutes;
+  const hasEarlyLeave = endMinutes < assignedEndMinutes;
   const hasOvertime = shift.overtimeHours > 0;
+  const earlyLeaveHeight = hasEarlyLeave
+    ? ((assignedEndMinutes - endMinutes) / 60) * hourHeight
+    : 0;
+  const statusBandHeight = hasOvertime
+    ? OVERTIME_BAND_HEIGHT
+    : hasEarlyLeave
+      ? `${earlyLeaveHeight}px`
+      : null;
+  const statusMarkerColor = isLate
+    ? "status-late"
+    : hasEarlyLeave
+      ? "status-early-leave"
+      : hasOvertime
+        ? "status-overtime"
+        : "status-regular";
+  const visualEndMinutes = hasEarlyLeave ? assignedEndMinutes : endMinutes;
   const top = topPadding + (startMinutes / 60) * hourHeight;
   const height = Math.max(
-    ((endMinutes - startMinutes) / 60) * hourHeight,
+    ((visualEndMinutes - startMinutes) / 60) * hourHeight,
     MIN_CELL_HEIGHT,
   );
 
@@ -96,22 +114,20 @@ export default function WorkHoursCell({
       <div
         className="absolute left-2 flex items-center gap-1 text-xs leading-none"
         style={{
-          bottom: hasOvertime
-            ? `calc(0.5rem + ${OVERTIME_BAND_HEIGHT})`
+          bottom: statusBandHeight
+            ? `calc(0.5rem + ${statusBandHeight})`
             : "0.5rem",
         }}
       >
-        <span
-          className={`h-5 w-1.5 rounded-full ${
-            isLate
-              ? "status-late"
-              : hasOvertime
-                ? "status-overtime"
-                : "status-regular"
-          }`}
-        />
+        <span className={`h-5 w-1.5 rounded-full ${statusMarkerColor}`} />
         <span>{formatTimeRange(shift)}</span>
       </div>
+      {hasEarlyLeave ? (
+        <div
+          className="status-early-leave absolute inset-x-0 bottom-0"
+          style={{ height: `${earlyLeaveHeight}px` }}
+        />
+      ) : null}
       {hasOvertime ? (
         <div
           className="status-overtime absolute inset-x-0 bottom-0"

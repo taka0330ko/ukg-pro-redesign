@@ -8,7 +8,7 @@ export const timePeriods = [
       end: "2026-04-11",
     },
 
-    totalHours: 13.92,
+    totalHours: 16.68,
 
     shifts: [
       {
@@ -18,22 +18,25 @@ export const timePeriods = [
         day: "Sun",
 
         assigned: {
-          start: "17:50",
+          start: "13:30",
           end: "22:15",
         },
 
         actual: {
-          clockIn: "17:50",
+          clockIn: "14:19",
           clockOut: "22:15",
         },
 
-        breaks: [          {
-            start: "20:18",
-            end: "20:33",
-            paid: true,
-          },],
+        breaks: [
+          {
+            start: "16:15",
+            end: "17:15",
+            paid: false,
+          },
+        ],
 
-        workHours: 4.42,
+        // Late clock-in
+        workHours: 6.93,
         overtimeHours: 0,
 
         color: "green",
@@ -51,8 +54,8 @@ export const timePeriods = [
         },
 
         actual: {
-          clockIn: "17:42",
-          clockOut: "22:16",
+          clockIn: "17:25",
+          clockOut: "22:15",
         },
 
         breaks: [
@@ -63,9 +66,7 @@ export const timePeriods = [
           },
         ],
 
-        // 17:42 -> 17:40
-        // 22:16 -> 22:15
-        workHours: 4.58,
+        workHours: 4.83,
         overtimeHours: 0,
 
         color: "green",
@@ -88,9 +89,9 @@ export const timePeriods = [
         },
 
         breaks: [
-                    {
+          {
             start: "20:36",
-            end: "17:51",
+            end: "20:51",
             paid: true,
           },
         ],
@@ -112,7 +113,7 @@ export const timePeriods = [
       end: "2026-04-18",
     },
 
-    totalHours: 18.25,
+    totalHours: 17,
 
     shifts: [
       {
@@ -158,7 +159,7 @@ export const timePeriods = [
 
         actual: {
           clockIn: "17:25",
-          clockOut: "22:15",
+          clockOut: "21:00",
         },
 
         breaks: [
@@ -169,7 +170,7 @@ export const timePeriods = [
           },
         ],
 
-        workHours: 4.83,
+        workHours: 3.58,
         overtimeHours: 0,
 
         color: "green",
@@ -221,21 +222,21 @@ export const paySummaries = [
 
     hourlyRate: 18.75,
 
-    totalHours: 32.17,
-    regularHours: 31.67,
+    totalHours: 33.68,
+    regularHours: 33.18,
     overtimeHours: 0.5,
 
-    grossPay: 603.19,
+    grossPay: 636.19,
 
     deductions: {
-      incomeTax: 42.18,
-      cpp: 24.91,
-      ei: 9.53,
+      incomeTax: 44.53,
+      cpp: 26.27,
+      ei: 10.05,
 
-      total: 76.62,
+      total: 80.85,
     },
 
-    netPay: 526.57,
+    netPay: 555.34,
 
     currency: "CAD",
   },
@@ -247,8 +248,8 @@ export const weeklySummaries = [
 
     weekId: "week1",
 
-    totalHours: 13.92,
-    regularHours: 13.92,
+    totalHours: 16.68,
+    regularHours: 16.68,
     overtimeHours: 0,
 
     totalShifts: 3,
@@ -259,8 +260,8 @@ export const weeklySummaries = [
 
     weekId: "week2",
 
-    totalHours: 18.25,
-    regularHours: 17.75,
+    totalHours: 17,
+    regularHours: 16.5,
     overtimeHours: 0.5,
 
     totalShifts: 3,
