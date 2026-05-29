@@ -10,7 +10,7 @@ export default function PayOverviewHeader() {
           <span className="notification-icon-round flex size-8 shrink-0 items-center justify-center rounded-full">
             <Info className="notification-icon size-4" strokeWidth={3} />
           </span>
-          <p>Your next regular pay will be May 08, 2026</p>
+          <p>Your next regular pay will be June 05, 2026</p>
         </div>
       </div>
 
@@ -21,7 +21,7 @@ export default function PayOverviewHeader() {
           className="button-secondary inline-flex items-center gap-2 rounded-full px-4 py-2 font-medium"
         >
           <CalendarDays className="size-6" strokeWidth={2.4} />
-          <span>Apr 24, 2026</span>
+          <span>Mar 27, 2026</span>
           <ChevronDown className="size-4" strokeWidth={3} />
         </button>
       </div>

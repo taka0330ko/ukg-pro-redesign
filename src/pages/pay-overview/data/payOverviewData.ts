@@ -216,8 +216,8 @@ export const paySummaries = [
     label: "Current Pay Period",
 
     period: {
-      start: "2026-04-05",
-      end: "2026-04-18",
+      start: "2026-03-08",
+      end: "2026-03-21",
     },
 
     hourlyRate: 18.75,
@@ -226,17 +226,17 @@ export const paySummaries = [
     regularHours: 33.18,
     overtimeHours: 0.5,
 
-    grossPay: 636.19,
+    grossPay: 631.56,
 
     deductions: {
-      incomeTax: 44.53,
-      cpp: 26.27,
-      ei: 10.05,
+      incomeTax: 22.05,
+      cpp: 13.08,
+      ei: 4.91,
 
-      total: 80.85,
+      total: 40.04,
     },
 
-    netPay: 555.34,
+    netPay: 591.52,
 
     currency: "CAD",
   },

@@ -77,7 +77,7 @@ export default function PieChart({ deductions, netPay }: PieChartProps) {
           },
           slicedOffset: 8,
           size: 240,
-          startAngle: -48,
+          startAngle: 0,
           states: {
             hover: {
               brightness: 0,
@@ -93,14 +93,14 @@ export default function PieChart({ deductions, netPay }: PieChartProps) {
           type: "pie",
           data: [
             {
-              name: "Deductions",
-              y: deductions,
-              color: deductionsColor,
-            },
-            {
               name: "Net pay",
               y: netPay,
               color: netPayColor,
+            },
+            {
+              name: "Deductions",
+              y: deductions,
+              color: deductionsColor,
             },
           ],
         },
