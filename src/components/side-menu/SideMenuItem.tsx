@@ -23,7 +23,7 @@ export function SideMenuItem({
 
   return (
     <button
-      className={`sidebar-item flex w-full items-center rounded-[12px] text-left leading-tight ${
+      className={`sidebar-item flex w-full cursor-not-allowed items-center rounded-[12px] text-left leading-tight ${
         isChild
           ? "min-h-12 px-[40px] text-[14px]"
           : "min-h-12 gap-4 px-3 text-[16px] font-medium"

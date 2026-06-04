@@ -1,5 +1,6 @@
 import { useState, type MouseEvent } from "react";
 import { timePeriods } from "../../data/payOverviewData";
+import { HOUR_HEIGHT, TOP_PADDING } from "./timeScale";
 
 type Shift = (typeof timePeriods)[number]["shifts"][number];
 
@@ -12,8 +13,6 @@ type WorkHoursCellProps = {
   topPadding?: number;
 };
 
-const DEFAULT_HOUR_HEIGHT = 14;
-const DEFAULT_TOP_PADDING = 16;
 const MIN_CELL_HEIGHT = 36;
 const OVERTIME_BAND_HEIGHT = "0.625rem";
 
@@ -29,11 +28,11 @@ function formatTimeRange(shift: Shift) {
 
 export default function WorkHoursCell({
   shift,
-  hourHeight = DEFAULT_HOUR_HEIGHT,
+  hourHeight = HOUR_HEIGHT,
   onActivate,
   onDeactivate,
   onMove,
-  topPadding = DEFAULT_TOP_PADDING,
+  topPadding = TOP_PADDING,
 }: WorkHoursCellProps) {
   const startMinutes = timeToMinutes(shift.actual.clockIn);
   const endMinutes = timeToMinutes(shift.actual.clockOut);
@@ -104,7 +103,7 @@ export default function WorkHoursCell({
       }}
     >
       <div
-        className="work-cell-cursor pointer-events-none absolute z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 scale-0 rounded-full opacity-80 transition-all duration-75 group-hover:scale-100"
+        className="work-cell-cursor pointer-events-none absolute z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 scale-0 rounded-full opacity-80 transition-[opacity,transform] duration-75 group-hover:scale-100"
         style={{
           left: `${cursorPosition.x}px`,
           top: `${cursorPosition.y}px`,

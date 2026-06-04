@@ -1,6 +1,7 @@
 import type { MouseEvent } from "react";
 import { useState } from "react";
 import { timePeriods } from "../../data/payOverviewData";
+import { DAY_HEIGHT, TOP_PADDING } from "./timeScale";
 import WorkHoursCell from "./WorkHoursCell";
 import WorkHoursCard from "./WorkHoursCard";
 
@@ -16,10 +17,6 @@ type TimeRowProps = {
 };
 
 const DAY_COUNT = 7;
-const ROW_HEIGHT = 336;
-
-// Must match TimeColumn so vertical day columns and horizontal time lines align.
-const TOP_PADDING = 16;
 
 const dayFormatter = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
@@ -73,7 +70,7 @@ export default function TimeRow({ period = timePeriods[0] }: TimeRowProps) {
           backgroundPosition: `0 ${TOP_PADDING}px`,
           backgroundRepeat: "no-repeat",
           backgroundSize: `100% calc(100% - ${TOP_PADDING}px)`,
-          height: `${ROW_HEIGHT + TOP_PADDING}px`,
+          height: `${DAY_HEIGHT + TOP_PADDING}px`,
           paddingTop: `${TOP_PADDING}px`,
         }}
         aria-label={`${period.label} day columns`}

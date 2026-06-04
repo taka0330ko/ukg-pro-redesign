@@ -28,14 +28,14 @@ export default function PaySummarySection() {
 
   return (
     <section className="panel-card min-h-[520px] min-w-0">
-      <h3 className="section-title">Pay Summary</h3>
+      <h3 className="section-title my-2">Pay Summary</h3>
 
       <PieChart
         deductions={paySummary.deductions.total}
         netPay={paySummary.netPay}
       />
 
-      <div className="text-primary mt-5 space-y-5 text-base">
+      <div className="text-primary space-y-4 text-base">
         {summaryRows.map(([label, value]) => (
           <div key={label} className="flex items-center justify-between gap-6">
             <span>{label}</span>
@@ -43,7 +43,7 @@ export default function PaySummarySection() {
           </div>
         ))}
 
-        <div className="divider-primary border-t pt-5">
+        <div className="divider-primary border-t pt-4">
           <div className="flex items-center justify-between gap-6 font-bold">
             <span>Take home pay</span>
             <span>{formatCurrency(paySummary.netPay)}</span>
@@ -51,10 +51,10 @@ export default function PaySummarySection() {
         </div>
       </div>
 
-      <div className="mt-9 flex justify-center">
+      <div className="mt-8 flex justify-center">
         <button
           type="button"
-          className="button-primary inline-flex items-center gap-4 rounded-full px-6 py-3 text-base font-medium"
+          className="button-primary inline-flex cursor-not-allowed items-center gap-4 rounded-full px-6 py-3 text-base font-medium"
         >
           <span className="relative flex size-8 shrink-0 items-center justify-center">
             <FileText className="size-8" strokeWidth={2.4} />

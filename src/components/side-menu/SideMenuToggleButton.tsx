@@ -7,7 +7,7 @@ export function SideMenuToggleButton() {
   return (
     <button
       aria-label="Toggle side menu"
-      className={`rounded-full p-2 hover:bg-gray-200 cursor-pointer ${
+      className={`rounded-full p-2 hover:bg-gray-200 cursor-pointer mt-4 ${
         isOpen ? "hidden" : ""
       }`}
       type="button"

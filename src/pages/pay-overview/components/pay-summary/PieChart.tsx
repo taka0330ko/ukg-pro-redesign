@@ -32,8 +32,8 @@ export default function PieChart({ deductions, netPay }: PieChartProps) {
     const chart = Highcharts.chart(chartRef.current, {
       chart: {
         type: "pie",
-        width: 360,
-        height: 360,
+        width: 300,
+        height: 240,
         backgroundColor: "transparent",
         spacing: [0, 0, 0, 0],
       },
@@ -76,7 +76,7 @@ export default function PieChart({ deductions, netPay }: PieChartProps) {
             },
           },
           slicedOffset: 8,
-          size: 240,
+          size: 180,
           startAngle: 0,
           states: {
             hover: {
@@ -112,5 +112,5 @@ export default function PieChart({ deductions, netPay }: PieChartProps) {
     };
   }, [deductions, netPay]);
 
-  return <div ref={chartRef} className="mx-auto h-[360px] w-[360px]" />;
+  return <div ref={chartRef} className="mx-auto max-w-80" />;
 }

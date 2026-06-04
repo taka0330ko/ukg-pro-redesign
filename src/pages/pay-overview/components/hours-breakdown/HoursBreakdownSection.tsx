@@ -29,13 +29,13 @@ export default function HoursBreakdownSection() {
       <div className="flex items-start justify-between">
         <h3 className="section-title">Hours breakdown</h3>
       </div>
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center mt-2">
         <WeekToggle
           selectedWeekId={selectedWeekId}
           onChange={setSelectedWeekId}
         />
       </div>
-      <figure className="mt-10 max-w-full overflow-x-auto overflow-y-hidden px-2 pb-2">
+      <figure className="mt-2 max-w-full overflow-x-auto overflow-y-hidden px-2 pb-2">
         <div className="min-w-[760px]">
           <div className="relative ml-16">
             <div>
@@ -48,7 +48,7 @@ export default function HoursBreakdownSection() {
         </div>
       </figure>
 
-      <div className="text-primary mx-auto mt-8 w-full max-w-[720px] text-base">
+      <div className="text-primary mx-auto mt-4 w-full max-w-[720px] text-base">
         <div className="space-y-3">
           {timePeriods.map((period) => {
             const summary = weeklySummaries.find(
@@ -81,7 +81,7 @@ export default function HoursBreakdownSection() {
           })}
         </div>
 
-        <div className="divider-primary mt-4 border-t pt-5">
+        <div className="divider-primary mt-2 border-t pt-5">
           <div className="grid grid-cols-[1fr_auto] items-center gap-4 font-bold">
             <span>Total hours</span>
             <span>{totalHours.toFixed(2)} Hours</span>

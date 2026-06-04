@@ -1,8 +1,4 @@
-const HOUR_HEIGHT = 14;
-const DAY_HEIGHT = 24 * HOUR_HEIGHT;
-
-// Keep the first time label fully visible while the 00:00 grid line stays aligned.
-const TOP_PADDING = 16;
+import { DAY_HEIGHT, HOUR_HEIGHT, TOP_PADDING } from "./timeScale";
 
 const timeLabels = ["00:00", "06:00", "12:00", "18:00", "24:00"];
 

@@ -11,12 +11,11 @@ export function AppLayout({ children }: AppLayoutProps) {
     <div className="workspace-bg flex min-h-screen">
       <SideMenu />
       <div className="min-w-0 flex-1">
-        <div className="workspace-bg fixed z-60 flex w-full items-center px-4 pb-4">
+        <div className="fixed z-60 flex w-full items-center px-4 pb-4">
           <SideMenuToggleButton />
           <AppHeader />
         </div>
-
-        <main className="mt-16">
+        <main className="mt-8">
           {children}
         </main>
       </div>

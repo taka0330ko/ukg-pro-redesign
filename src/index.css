@@ -156,7 +156,7 @@
   }
 
   .section-title {
-    @apply text-2xl font-medium;
+    @apply text-xl font-medium;
     color: var(--color-text-primary);
   }
 
